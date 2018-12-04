@@ -47,7 +47,7 @@ class GridView: UIView {
       topView.leftAnchor.constraint(equalTo: topView.superview!.leftAnchor),
       topView.rightAnchor.constraint(equalTo: topView.superview!.rightAnchor),
       topView.heightAnchor.constraint(equalToConstant: 40),
-
+      topView.bottomAnchor.constraint(equalTo: bottomView.topAnchor),
       collectionView.topAnchor.constraint(equalTo: topView.bottomAnchor),
         
       loadingIndicator.centerXAnchor.constraint(equalTo: loadingIndicator.superview!.centerXAnchor),
@@ -57,6 +57,7 @@ class GridView: UIView {
     if #available(iOS 11, *) {
       Constraint.on(
         topView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+        
         bottomView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 50),
         collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
