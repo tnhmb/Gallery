@@ -45,13 +45,13 @@ class ImagesController: UIViewController {
     dropdownController.didMove(toParent: self)
 
     gridView.bottomView.addSubview(stackView)
-
+    gridView.bottomView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
     gridView.g_pinEdges()
 
     dropdownController.view.g_pin(on: .left)
     dropdownController.view.g_pin(on: .right)
     dropdownController.view.g_pin(on: .height, constant: -40) // subtract gridView.topView height
-
+    //dropdownController.view.topAnchor.constraint(equalTo: view.topAnchor, constant:50)
     dropdownController.expandedTopConstraint = dropdownController.view.g_pin(on: .top, view: gridView.topView, on: .bottom, constant: 1)
     dropdownController.expandedTopConstraint?.isActive = false
     dropdownController.collapsedTopConstraint = dropdownController.view.g_pin(on: .top, on: .bottom)
