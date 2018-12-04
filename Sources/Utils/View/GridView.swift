@@ -48,17 +48,27 @@ class GridView: UIView {
       topView.rightAnchor.constraint(equalTo: topView.superview!.rightAnchor),
       topView.heightAnchor.constraint(equalToConstant: 40),
 
+      collectionView.topAnchor.constraint(equalTo: topView.bottomAnchor),
+        
       loadingIndicator.centerXAnchor.constraint(equalTo: loadingIndicator.superview!.centerXAnchor),
       loadingIndicator.centerYAnchor.constraint(equalTo: loadingIndicator.superview!.centerYAnchor)
     )
 
     if #available(iOS 11, *) {
       Constraint.on(
-        topView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
+        topView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+        bottomView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 50),
+        collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+        collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+        collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor)
       )
     } else {
       Constraint.on(
-        topView.topAnchor.constraint(equalTo: topView.superview!.topAnchor)
+        topView.topAnchor.constraint(equalTo: topView.superview!.topAnchor),
+        bottomView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 50),
+        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor)
       )
     }
 
@@ -67,8 +77,8 @@ class GridView: UIView {
 
     emptyView.g_pinEdges(view: collectionView)
     
-    collectionView.g_pinDownward()
-    collectionView.g_pin(on: .top, view: topView, on: .bottom, constant: 1)
+    //collectionView.g_pinDownward()
+    //collectionView.g_pin(on: .top, view: topView, on: .bottom, constant: 1)
 
     bottomBlurView.g_pinEdges()
 
