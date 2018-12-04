@@ -46,6 +46,7 @@ class ImagesController: UIViewController {
 
     gridView.bottomView.addSubview(stackView)
 
+    gridView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
     gridView.g_pinEdges()
 
     dropdownController.view.g_pin(on: .left)
