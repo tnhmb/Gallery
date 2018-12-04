@@ -16,7 +16,7 @@ class ViewController: UIViewController, LightboxControllerDismissalDelegate, Gal
     view.backgroundColor = UIColor.white
 
     Gallery.Config.VideoEditor.savesEditedVideoToLibrary = true
-
+    gallery.t
     button = UIButton(type: .system)
     button.frame.size = CGSize(width: 200, height: 50)
     button.setTitle("Open Gallery", for: UIControl.State())

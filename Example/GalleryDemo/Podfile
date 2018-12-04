@@ -3,7 +3,7 @@ use_frameworks!
 platform :ios, '9.0'
 
 target 'GalleryDemo' do
- pod 'Gallery', path: '../../'
+ pod 'Gallery', :git => 'https://github.com/tnhmb/Gallery.git'
  pod 'Lightbox'
  pod 'Hue'
  pod 'SVProgressHUD'
