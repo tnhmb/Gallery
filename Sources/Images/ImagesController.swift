@@ -45,7 +45,7 @@ class ImagesController: UIViewController {
     dropdownController.didMove(toParent: self)
 
     gridView.bottomView.addSubview(stackView)
-    gridView.bottomView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+    gridView.bottomView.layoutMargins = UIEdgeInsets(top: 50, left: 0, bottom: 50, right: 0)
     gridView.g_pinEdges()
 
     dropdownController.view.g_pin(on: .left)
@@ -59,7 +59,7 @@ class ImagesController: UIViewController {
     stackView.g_pin(on: .centerY, constant: -4)
     stackView.g_pin(on: .left, constant: 38)
     stackView.g_pin(size: CGSize(width: 56, height: 56))
-
+    stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
     gridView.closeButton.addTarget(self, action: #selector(closeButtonTouched(_:)), for: .touchUpInside)
     gridView.doneButton.addTarget(self, action: #selector(doneButtonTouched(_:)), for: .touchUpInside)
     gridView.arrowButton.addTarget(self, action: #selector(arrowButtonTouched(_:)), for: .touchUpInside)
