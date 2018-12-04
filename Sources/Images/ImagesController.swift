@@ -45,23 +45,13 @@ class ImagesController: UIViewController {
     dropdownController.didMove(toParent: self)
 
     gridView.bottomView.addSubview(stackView)
-    //gridView.bottomView.layoutMargins = UIEdgeInsets(top: 50, left: 0, bottom: 50, right: 0)
-    if #available(iOS 11.0, *) {
-        gridView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        gridView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 50).isActive = true
-        gridView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        gridView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-    } else {
-        gridView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
-        gridView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50).isActive = true
-        gridView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        gridView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-    }
+
+    gridView.g_pinEdges()
 
     dropdownController.view.g_pin(on: .left)
     dropdownController.view.g_pin(on: .right)
     dropdownController.view.g_pin(on: .height, constant: -40) // subtract gridView.topView height
-    //dropdownController.view.topAnchor.constraint(equalTo: view.topAnchor, constant:50)
+
     dropdownController.expandedTopConstraint = dropdownController.view.g_pin(on: .top, view: gridView.topView, on: .bottom, constant: 1)
     dropdownController.expandedTopConstraint?.isActive = false
     dropdownController.collapsedTopConstraint = dropdownController.view.g_pin(on: .top, on: .bottom)
@@ -69,7 +59,7 @@ class ImagesController: UIViewController {
     stackView.g_pin(on: .centerY, constant: -4)
     stackView.g_pin(on: .left, constant: 38)
     stackView.g_pin(size: CGSize(width: 56, height: 56))
-    stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+
     gridView.closeButton.addTarget(self, action: #selector(closeButtonTouched(_:)), for: .touchUpInside)
     gridView.doneButton.addTarget(self, action: #selector(doneButtonTouched(_:)), for: .touchUpInside)
     gridView.arrowButton.addTarget(self, action: #selector(arrowButtonTouched(_:)), for: .touchUpInside)
