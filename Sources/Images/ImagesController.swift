@@ -45,8 +45,18 @@ class ImagesController: UIViewController {
     dropdownController.didMove(toParent: self)
 
     gridView.bottomView.addSubview(stackView)
-    gridView.bottomView.layoutMargins = UIEdgeInsets(top: 50, left: 0, bottom: 50, right: 0)
-    gridView.g_pinEdges()
+    //gridView.bottomView.layoutMargins = UIEdgeInsets(top: 50, left: 0, bottom: 50, right: 0)
+    if #available(iOS 11.0, *) {
+        gridView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
+        gridView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 50).isActive = true
+        gridView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        gridView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+    } else {
+        gridView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        gridView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50).isActive = true
+        gridView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        gridView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
 
     dropdownController.view.g_pin(on: .left)
     dropdownController.view.g_pin(on: .right)
