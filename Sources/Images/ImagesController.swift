@@ -64,7 +64,7 @@ class ImagesController: UIViewController {
     gridView.closeButton.addTarget(self, action: #selector(closeButtonTouched(_:)), for: .touchUpInside)
     gridView.doneButton.addTarget(self, action: #selector(doneButtonTouched(_:)), for: .touchUpInside)
     gridView.arrowButton.addTarget(self, action: #selector(arrowButtonTouched(_:)), for: .touchUpInside)
-    stackView.addTarget(self, action: #selector(stackViewTouched(_:)), for: .touchUpInside)
+    //stackView.addTarget(self, action: #selector(stackViewTouched(_:)), for: .touchUpInside)
 
     gridView.collectionView.dataSource = self
     gridView.collectionView.delegate = self
